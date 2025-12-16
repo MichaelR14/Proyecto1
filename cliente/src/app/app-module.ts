@@ -4,8 +4,10 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-
-
+//******************************* */
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+//*************************** */
 
 
 //COMPONENTES
@@ -22,7 +24,12 @@ import { ListarProducto } from './components/listar-producto/listar-producto';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // ***********************************************
+    // 2. ¡Agregar aquí las dos líneas requeridas!
+     BrowserAnimationsModule,
+      ToastrModule.forRoot(),
+    // ***********************************************
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
