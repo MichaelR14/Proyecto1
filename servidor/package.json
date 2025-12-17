@@ -1,0 +1,23 @@
+{
+  "name": "productoapi",
+  "version": "1.0.0",
+  "description": "PRUEBA API",
+  "license": "ISC",
+  "author": "MICHAEL ROJAS",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon ."
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "morgan": "^1.10.1",
+    "pg": "^8.16.3",
+    "react": "^19.2.3"
+  }
+}
