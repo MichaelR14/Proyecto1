@@ -5,29 +5,39 @@
                 <div class="card-body text-center">
                     <span class="titulo">LISTADO DE PRODUCTOS</span>
                     <button class="btn btn-success float-end" routerLink="/crear-producto">NUEVO</button>
-                <table class="table table-striped table-dark table-hover mt-5">
-                         <thead>
-                            <tr>
-                                <th scope="col">Producto</th>
-                                <th scope="col">Categoria</th>
-                                <th scope="col">Ubicacion</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>Coca-Cola</td>
-                                <td>Bebida</td>
-                                <td>Chile</td>
-                                <td>5000</td>
-                                <td>
-                                     <i class=" fas fa-sharp fa-solid fa-pen-to-square text-primary"></i>
-                                    <i class="fas fa-sharp fa-solid fa-trash text-danger"></i>
-                                </td>
-                            </tr>
+                @if (listProductos.length > 0) {
+    <table class="table table-striped table-dark table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Ubicación</th>
+                <th scope="col">Precio</th>
+                <th scope="col" class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @for (producto of listProductos; track producto) {
+                <tr>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.categoria }}</td>
+                    <td>{{ producto.ubicacion }}</td>
+                    <td>{{ producto.precio | currency: '$' }}</td>
+                    <td class="text-center">
+                        <i class="fas fa-sharp fa-solid fa-pen-to-square text-primary me-3" style="cursor: pointer;"></i>
+                        <i (click)="eliminarProductos(producto.id)" class="fas fa-sharp fa-solid fa-trash text-danger" style="cursor: pointer;"></i>
+                    </td>
+                </tr>
+                    } @empty {
+                        <tr>
+                        <td colspan="5" class="text-center">No hay productos para mostrar</td>
+                        </tr>
+                    }
                         </tbody>
-                </table>
+                    </table>
+                     } @else {
+                        <div class="alert alert-info mt-5">Cargando productos o lista vacía...</div>
+                            }
                 </div>
             </div>
         </div>

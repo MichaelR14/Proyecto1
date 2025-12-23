@@ -5,8 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 //******************************* */
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //*************************** */
 
 
@@ -26,14 +27,17 @@ import { ListarProducto } from './components/listar-producto/listar-producto';
     AppRoutingModule,
     ReactiveFormsModule,
     // ***********************************************
-    // 2. ¡Agregar aquí las dos líneas requeridas!
-     BrowserAnimationsModule,
+    BrowserAnimationsModule,
       ToastrModule.forRoot(),
+      
+      
     // ***********************************************
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [App]
 })

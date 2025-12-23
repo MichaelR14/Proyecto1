@@ -1,7 +1,7 @@
 
 
 export class Producto  {
-    _id?        : number;
+    id?        : number;
     nombre      : string;
     categoria   : string;
     ubicacion   : string;
