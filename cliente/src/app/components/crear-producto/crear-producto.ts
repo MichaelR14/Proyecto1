@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Producto } from '../../models/producto';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProductoService } from '../../services/producto';
-import { error } from 'console';
 
 
 @Component({
@@ -14,18 +13,20 @@ import { error } from 'console';
   styleUrl: './crear-producto.css',
 })
 export class CrearProducto {
-  productoForm: FormGroup;
+  productoForm : FormGroup;
+  titulo = 'CREAR PRODUCTO';
 
   constructor(private fb: FormBuilder,
               private router: Router,
               private toastr: ToastrService,
-              private _productoService: ProductoService){
+              private _productoService: ProductoService,
+              private aRouter: ActivatedRoute){
     this.productoForm = this.fb.group({
-      producto: ['', Validators.required],
-      categoria: ['', Validators.required],
-      ubicacion: ['', Validators.required],
-      precio: ['', Validators.required]
-    });
+      producto:   ['', Validators.required],
+      categoria:  ['', Validators.required],
+      ubicacion:  ['', Validators.required],
+      precio:     ['', Validators.required]
+    })
   }
 
   ngOnInit(): void {
